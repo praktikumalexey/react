@@ -17,6 +17,9 @@ module.exports = (env) => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "eslint-loader",
+          options: {
+            emitWarning: true,
+          },
         },
         {
           test: /\.(js|jsx)$/,
