@@ -29,11 +29,10 @@ module.exports = (env) => {
         {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
-          use: ["ts-loader"],
+          use: [{ loader: "babel-loader" }, { loader: "ts-loader" }],
         },
         {
           test: /\.css$/i,
-          exclude: /node_modules/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
@@ -52,7 +51,7 @@ module.exports = (env) => {
           ],
         },
         {
-          test: /\.(png|svg|ttf|eot|woff|otf)$/,
+          test: /\.(png|svg|ttf|eot|woff|woff2|otf)$/,
           use: ["file-loader"],
         },
       ],
@@ -61,7 +60,7 @@ module.exports = (env) => {
       alias: {
         "~": path.resolve(__dirname, "src"),
       },
-      extensions: ["*", ".js", ".jsx", ".ts", ".tsx", "json"],
+      extensions: ["*", ".js", ".jsx", ".ts", ".tsx", "json", "css"],
     },
     output: {
       path: path.resolve(__dirname, "./dist"),
